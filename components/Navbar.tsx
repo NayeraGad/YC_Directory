@@ -7,7 +7,7 @@ const Navbar = async () => {
   const session = await auth();
 
   return (
-    <header className=" px-5 py-3 bg-white shadow-sm font-work-sans">
+    <header className="px-5 py-3 bg-white shadow-sm font-work-sans">
       <nav className="flex justify-between items-center">
         <Link href="/">
           <Image
@@ -32,9 +32,7 @@ const Navbar = async () => {
                   await signOut({ redirectTo: "/" });
                 }}
               >
-                <button type="submit" className=" cursor-pointer">
-                  Logout
-                </button>
+                <button type="submit">Logout</button>
               </form>
 
               <Link href={`/user/${session?.user.id}`}>
@@ -48,7 +46,7 @@ const Navbar = async () => {
                 await signIn("github");
               }}
             >
-              <button type="submit" className=" cursor-pointer">
+              <button type="submit">
                 <span>Login</span>
               </button>
             </form>
