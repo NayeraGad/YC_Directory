@@ -4,12 +4,17 @@ import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 import { Button } from "./ui/button";
+import { Author, Startup } from "@/sanity/types";
+
+export type StartupCardType = Omit<Startup, "author"> & {
+  author?: Author;
+};
 
 const StartupCard = ({ post }: { post: StartupCardType }) => {
   const {
     _createdAt,
     views,
-    author: { _id: authorId, name },
+    author,
     _id,
     description,
     image,
@@ -30,8 +35,8 @@ const StartupCard = ({ post }: { post: StartupCardType }) => {
 
       <div className="flex-between mt-5 gap-5">
         <div className="flex-1">
-          <Link href={`/user/${authorId}`}>
-            <p className="text-16-medium line-clamp-1">{name}</p>
+          <Link href={`/user/${author?._id}`}>
+            <p className="text-16-medium line-clamp-1">{author?.name}</p>
           </Link>
 
           <Link href={`/startup/${_id}`}>
@@ -39,10 +44,10 @@ const StartupCard = ({ post }: { post: StartupCardType }) => {
           </Link>
         </div>
 
-        <Link href={`/user/${authorId}`}>
+        <Link href={`/user/${author?._id}`}>
           <Image
-            src={image}
-            alt={`${name} avatar`}
+            src={image as string}
+            alt={`${author?.name}'s avatar`}
             width={48}
             height={48}
             className="rounded-full"
@@ -57,7 +62,7 @@ const StartupCard = ({ post }: { post: StartupCardType }) => {
       </Link>
 
       <div className="flex-between gap-3 mt-5">
-        <Link href={`/?query=${category.toLowerCase()}`}>
+        <Link href={`/?query=${category?.toLowerCase()}`}>
           <p className=" text-16-medium">{category}</p>
         </Link>
 

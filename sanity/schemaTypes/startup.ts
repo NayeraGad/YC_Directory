@@ -1,3 +1,4 @@
+import { CategoryTypes } from "@/lib/lists";
 import { defineField, defineType } from "sanity";
 
 export const startup = defineType({
@@ -32,8 +33,10 @@ export const startup = defineType({
     defineField({
       name: "category",
       type: "string",
-      validation: (rule) =>
-        rule.min(1).max(20).required().error("Please enter a category"),
+      options: {
+        list: CategoryTypes,
+      },
+      validation: (rule) => rule.required(),
     }),
     defineField({
       name: "image",
