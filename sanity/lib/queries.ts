@@ -45,3 +45,15 @@ export const Startup_By_ID_Query =
 export const Startups_Views_Query = defineQuery(`
   *[_type == 'startup' && _id == $id][0]{
   _id, views}`);
+
+// Check if user authenticated using GitHub
+export const Auth_By_GitHub_Query = defineQuery(`
+  *[_type == "author" && id == $id][0]{
+  _id,
+  id,
+  name,
+  username,
+  email,
+  image,
+  bio
+  }`);

@@ -14,7 +14,7 @@ export default async function Home({
 
   const { data: posts } = await sanityFetch({
     query: Startups_Query,
-    params
+    params,
   });
 
   return (
