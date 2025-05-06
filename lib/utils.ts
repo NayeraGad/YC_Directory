@@ -22,3 +22,7 @@ export function formateNumber(number: number) {
     return number.toString();
   }
 }
+
+export function parseServerResponse<T>(response: T) {
+  return JSON.parse(JSON.stringify(response));
+}

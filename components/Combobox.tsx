@@ -22,13 +22,18 @@ export function Combobox() {
   const [value, setValue] = useState("");
 
   return (
-    <Popover open={open} onOpenChange={setOpen}>
-        <PopoverTrigger asChild className="!startup-form_input">
+    <>
+      <input type="hidden" name="category" value={value} />
+      
+      <Popover open={open} onOpenChange={setOpen}>
+        <PopoverTrigger asChild>
           <Button
+            id="category"
+            type="button"
             variant="outline"
             role="combobox"
             aria-expanded={open}
-            className="justify-between"
+            className="justify-between !startup-form_input"
           >
             {value
               ? CategoryTypes.find((category) => category.value === value)
@@ -37,7 +42,6 @@ export function Combobox() {
             <ChevronsUpDown className="opacity-50" />
           </Button>
         </PopoverTrigger>
-
         <PopoverContent align="start" className="ml-6 w-full p-0 bg-white">
           <Command>
             <CommandInput placeholder="Search category..." className="h-9" />
@@ -67,7 +71,8 @@ export function Combobox() {
             </CommandList>
           </Command>
         </PopoverContent>
-    </Popover>
+      </Popover>
+    </>
   );
 }
 

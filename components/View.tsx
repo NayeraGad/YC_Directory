@@ -27,11 +27,13 @@ const View = async ({ id }: { id: string }) => {
         <Ping />
       </div>
 
-      <p className=" view-text">
-        <span className="font-black">
-          {formateNumber(views)} {views === 1 ? "View" : "Views"}
-        </span>
-      </p>
+      {views && (
+        <p className=" view-text">
+          <span className="font-black">
+            {formateNumber(views)} {views === 1 ? "View" : "Views"}
+          </span>
+        </p>
+      )}
     </div>
   );
 };
