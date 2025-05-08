@@ -28,7 +28,7 @@ const View = async ({ id }: { id: string }) => {
       </div>
 
       {views && (
-        <p className=" view-text">
+        <p className="view-text">
           <span className="font-black">
             {formateNumber(views)} {views === 1 ? "View" : "Views"}
           </span>

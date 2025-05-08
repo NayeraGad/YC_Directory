@@ -24,7 +24,7 @@ export function Combobox() {
   return (
     <>
       <input type="hidden" name="category" value={value} />
-      
+
       <Popover open={open} onOpenChange={setOpen}>
         <PopoverTrigger asChild>
           <Button
@@ -52,7 +52,7 @@ export function Combobox() {
                   <CommandItem
                     key={category.value}
                     value={category.value}
-                    className=" hover:bg-primary hover:text-white"
+                    className="hover:bg-primary hover:text-white"
                     onSelect={(currentValue) => {
                       setValue(currentValue === value ? "" : currentValue);
                       setOpen(false);

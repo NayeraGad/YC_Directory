@@ -26,3 +26,11 @@ export function formateNumber(number: number) {
 export function parseServerResponse<T>(response: T) {
   return JSON.parse(JSON.stringify(response));
 }
+
+export function getInitials(name: string) {
+  return name
+    .split(" ")
+    .map((str) => str[0])
+    .join("")
+    .toUpperCase();
+}

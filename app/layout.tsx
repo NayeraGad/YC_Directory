@@ -67,9 +67,15 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${workSans.variable}`}>
-        {children}
+        <Toaster
+          closeButton
+          richColors
+          toastOptions={{
+            duration: 5 * 60 * 1000,
+          }}
+        />
 
-        <Toaster />
+        {children}
       </body>
     </html>
   );
