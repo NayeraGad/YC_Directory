@@ -13,14 +13,19 @@ import { toast } from "sonner";
 import { useRouter } from "next/navigation";
 import { createPitch } from "@/lib/actions";
 
+interface FormState {
+  status: string;
+  error?: string;
+}
+
 const StartupForm = () => {
   const [errors, setErrors] = useState<Record<string, string>>({});
 
-  const [pitch, setPitch] = useState("*Hello **World!!***");
+  const [pitch, setPitch] = useState("");
 
   const router = useRouter();
 
-  const handleFormSubmit = async (prevState: any, formData: FormData) => {
+  const handleFormSubmit = async (prevState: FormState, formData: FormData) => {
     try {
       const formValues = {
         title: formData.get("title") as string,
@@ -68,7 +73,7 @@ const StartupForm = () => {
     }
   };
 
-  const [state, formAction, isPending] = useActionState(handleFormSubmit, {
+  const [, formAction, isPending] = useActionState(handleFormSubmit, {
     error: "",
     status: "INITIAL",
   });
@@ -143,13 +148,14 @@ const StartupForm = () => {
         </label>
 
         <MDEditor
+          id="pitch"
           value={pitch}
           onChange={(value) => setPitch(value as string)}
-          id="pitch"
           preview="edit"
           height={300}
           style={{ borderRadius: 20, overflow: "hidden" }}
           textareaProps={{
+            name: "pitch",
             placeholder: "Briefly describe your idea",
           }}
           previewOptions={{

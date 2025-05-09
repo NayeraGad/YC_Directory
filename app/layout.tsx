@@ -69,10 +69,9 @@ export default function RootLayout({
       <body className={`${workSans.variable}`}>
         <Toaster
           closeButton
+          position="top-right"
+          duration={10 * 1000}
           richColors
-          toastOptions={{
-            duration: 5 * 60 * 1000,
-          }}
         />
 
         {children}
