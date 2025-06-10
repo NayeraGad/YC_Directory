@@ -13,11 +13,6 @@ import { toast } from "sonner";
 import { useRouter } from "next/navigation";
 import { createPitch } from "@/lib/actions";
 
-interface FormState {
-  status: string;
-  error?: string;
-}
-
 const StartupForm = () => {
   const [errors, setErrors] = useState<Record<string, string>>({});
 
@@ -25,7 +20,7 @@ const StartupForm = () => {
 
   const router = useRouter();
 
-  const handleFormSubmit = async (prevState: FormState, formData: FormData) => {
+  const handleFormSubmit = async (prevState: any, formData: FormData) => {
     try {
       const formValues = {
         title: formData.get("title") as string,

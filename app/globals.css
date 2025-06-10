@@ -70,6 +70,10 @@
   @apply flex justify-between items-center;
 }
 
+@utility flex-center {
+  @apply flex justify-center items-center;
+}
+
 @utility text-30-extrabold {
   @apply text-[30px] font-extrabold text-white;
 }
@@ -188,7 +192,7 @@
   @apply size-[50px] rounded-full bg-black flex justify-center items-center;
 }
 
-/* startupcard */
+/* startup card */
 @utility startup-card {
   @apply bg-white border-[5px] border-black py-6 px-5 rounded-[22px] shadow-200 hover:border-primary transition-all duration-500 hover:shadow-300 hover:bg-primary-100;
 }
@@ -213,7 +217,7 @@
   @apply w-full h-96 rounded-[22px] bg-zinc-400;
 }
 
-/* startupform */
+/* startup form */
 @utility startup-form {
   @apply max-w-2xl mx-auto bg-white my-10 space-y-8 px-6;
 }

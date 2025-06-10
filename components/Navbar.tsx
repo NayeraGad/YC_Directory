@@ -10,7 +10,7 @@ const Navbar = async () => {
 
   return (
     <header className="px-5 py-3 bg-white shadow-sm font-work-sans">
-      <nav className="flex justify-between items-center">
+      <nav className="flex-between">
         <Link href="/">
           <Image
             src="/logo.png"

@@ -5,12 +5,15 @@ import StartupCard, { StartupCardType } from "./StartupCard";
 
 const UserStartups = async ({ id }: { id: string }) => {
   const startups = await client.fetch(Startup_By_Author_Query, { id });
-
+  
   return (
     <>
       {startups.length ? (
         startups.map((startup: StartupCardType) => (
-          <StartupCard post={startup} key={startup._id} />
+          <StartupCard
+            post={startup}
+            key={startup._id}
+          />
         ))
       ) : (
         <p className="no-result">No posts added yet</p>
