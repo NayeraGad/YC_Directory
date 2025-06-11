@@ -13,8 +13,8 @@
   },
   "packageManager": "npm@11.3.0",
   "overrides": {
-    "react": "$react",
-    "react-dom": "$react-dom"
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0"
   },
   "dependencies": {
     "@radix-ui/react-alert-dialog": "^1.1.14",
