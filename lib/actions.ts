@@ -6,6 +6,14 @@ import slugify from "slugify";
 import { writeClient } from "@/sanity/lib/write_client";
 import { client } from "@/sanity/lib/client";
 
+type UpdateValues = {
+  title: string;
+  description: string;
+  category: string;
+  link: string;
+  pitch: string;
+};
+
 export const createPitch = async (
   state: any,
   form: FormData,
@@ -50,6 +58,51 @@ export const createPitch = async (
 
     return parseServerResponse({
       ...result,
+      error: "",
+      status: "SUCCESS",
+    });
+  } catch (error) {
+    console.log(error);
+
+    return parseServerResponse({
+      error: JSON.stringify(error),
+      status: "ERROR",
+    });
+  }
+};
+
+export const updatePitch = async (values: UpdateValues, id: string) => {
+  const session = await auth();
+
+  if (!session)
+    return parseServerResponse({ error: "Not signed in", status: "ERROR" });
+
+  const { title, description, category, link, pitch } = values;
+
+  const slug = slugify(title as string, {
+    replacement: "-",
+    lower: true,
+    strict: true,
+  });
+
+  try {
+    const updated = await writeClient
+      .patch(id)
+      .set({
+        title,
+        description,
+        category,
+        image: link,
+        slug: {
+          _type: slug,
+          current: slug,
+        },
+        pitch,
+      })
+      .commit();
+
+    return parseServerResponse({
+      ...updated,
       error: "",
       status: "SUCCESS",
     });

@@ -64,6 +64,7 @@ const DeleteBtn = ({ id, authorId }: { id: string; authorId: string }) => {
             <AlertDialogCancel asChild>
               <Button>Cancel</Button>
             </AlertDialogCancel>
+
             <AlertDialogAction asChild>
               <Button className="text-white" onClick={handleDelete}>
                 Delete

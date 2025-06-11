@@ -17,9 +17,14 @@ import {
 } from "@/components/ui/popover";
 import { CategoryTypes } from "@/lib/lists";
 
-export function Combobox() {
+export function Combobox({
+  value,
+  onChange,
+}: {
+  value: string;
+  onChange: (val: string) => void;
+}) {
   const [open, setOpen] = useState(false);
-  const [value, setValue] = useState("");
 
   return (
     <>
@@ -42,6 +47,7 @@ export function Combobox() {
             <ChevronsUpDown className="opacity-50" />
           </Button>
         </PopoverTrigger>
+
         <PopoverContent align="start" className="ml-6 w-full p-0 bg-white">
           <Command>
             <CommandInput placeholder="Search category..." className="h-9" />
@@ -54,7 +60,7 @@ export function Combobox() {
                     value={category.value}
                     className="hover:bg-primary hover:text-white"
                     onSelect={(currentValue) => {
-                      setValue(currentValue === value ? "" : currentValue);
+                      onChange(currentValue);
                       setOpen(false);
                     }}
                   >
